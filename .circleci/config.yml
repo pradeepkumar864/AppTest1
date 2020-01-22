@@ -1,4 +1,3 @@
-
 # Java Gradle CircleCI 2.0 configuration file
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
@@ -8,8 +7,6 @@ jobs:
   build:
     working_directory: ~/code
 
-    artifacts:
-      - "apptest1/app/build/outputs/apk/app-release-unsigned.apk"
     docker:
       - image: circleci/android:api-28 #confirm the latest docker image :)
     environment:
@@ -18,6 +15,11 @@ jobs:
       - checkout
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+          name: Build debug APK and release APK
+          command: |
+            ./gradlew :app:assembleDebug
+            ./gradlew :app:assembleDebugAndroidTest
       - run:
           name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
           command: sudo chmod +x ./gradlew
