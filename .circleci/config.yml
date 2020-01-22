@@ -18,8 +18,7 @@ jobs:
       - run:
           name: Build debug APK and release APK
           command: |
-            ./gradlew :app:assembleDebug
-            ./gradlew :app:assembleDebugAndroidTest
+            ./gradlew assembleDebugRelease
       - run:
           name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
           command: sudo chmod +x ./gradlew
