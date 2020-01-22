@@ -9,7 +9,7 @@ jobs:
     working_directory: ~/code
 
     artifacts:
-      - "app/build/outputs/apk/app-release-unsigned.apk"
+      - "apptest1/app/build/outputs/apk/app-release-unsigned.apk"
     docker:
       - image: circleci/android:api-28 #confirm the latest docker image :)
     environment:
