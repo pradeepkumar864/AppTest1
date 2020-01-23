@@ -2,6 +2,9 @@ apply plugin: 'com.android.application'
 
 android {
 
+    compileSdkVersion Integer.parseInt(project.COMPILE_VERSION)
+    buildToolsVersion project.BUILD_TOOLS_VERSION
+
     applicationVariants.all { variant ->
         variant.assemble.doLast {
             variant.outputs.each { output ->
