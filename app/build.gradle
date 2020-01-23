@@ -17,7 +17,7 @@ android {
             storePassword '123456'
             keyAlias 'appalias'
             keyPassword '123456'
-            storeFile file('C:/Users/y03655/Desktop/keystore.jks')
+            storeFile file('C:/workspaces/KeyStore/telematics/keystore.jks')
         }
     }
     compileSdkVersion 29
@@ -34,7 +34,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig getSigningConfig()
+            signingConfig signingConfigs.release
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
                     def name = "App_Name_${variant.versionName}.apk"
