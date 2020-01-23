@@ -15,13 +15,12 @@ android {
     signingConfigs {
         release {
             storePassword '123456'
-            keyAlias 'appalias'
+            keyAlias 'arjun'
             keyPassword '123456'
-            storeFile file('C:/workspaces/KeyStore/telematics/keystore.jks')
+            storeFile file('C:/workspaces/KeyStore/telematics/keystore1.jks')
         }
     }
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+
     defaultConfig {
         applicationId "com.example.apptest1"
         minSdkVersion 25
@@ -34,6 +33,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable false
             signingConfig signingConfigs.release
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
