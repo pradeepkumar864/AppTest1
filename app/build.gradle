@@ -14,9 +14,9 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('C:/Users/y03655/Desktop/keystore.jks')
             storePassword '123456'
             keyPassword '123456'
+            storeFile file('C:/Users/y03655/Desktop/keystore.jks')
         }
     }
     compileSdkVersion 29
