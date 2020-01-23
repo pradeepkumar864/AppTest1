@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
 
     compileSdkVersion Integer.parseInt(project.COMPILE_VERSION)
@@ -14,11 +18,10 @@ android {
     }
     signingConfigs {
         release {
-            storePassword '123456'
-            keyAlias 'arjun'
-            keyPassword '123456'
-            storeFile file('C:/workspaces/KeyStore/telematics/keystore1.jks')
-        }
+            keyAlias keystoreProperties['releaseKeyAlias']
+            keyPassword keystoreProperties['releaseKeyPassword']
+            storeFile file(rootDir.getCanonicalPath() + '/' + keystoreProperties['releaseKeyStore'])
+            storePassword keystoreProperties['releaseStorePassword']
     }
 
     defaultConfig {
@@ -53,4 +56,4 @@ android {
             androidTestImplementation 'androidx.test.ext:junit:1.1.1'
             androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
         }
-    }}}
+    }}}}
